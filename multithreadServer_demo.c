@@ -8,12 +8,12 @@
 #include <string.h>
 #include <ctype.h>
 
-struct info {
+struct info {   //pass as a parameter to fun()
     struct sockaddr_in addr;
     int fd;
 };
 
-void* fun(void* arg) {
+void* fun(void* arg) {      //the threads' call back function
     struct info* i = (struct info*)arg;
     fprintf(stdout, "client fd = %d\n", i->fd);
     char buffer[4096];
@@ -63,13 +63,14 @@ int main(int argc, const char* argv[]) {
         sys_err("bind error");
     if (listen(lfd, 256) == -1)
         sys_err("listen error");
+    //above are the normal steps used to make a server
 
     struct info clients[256];
     for (int i = 0; i < 256; i++)
         clients[i].fd = -1;
     while (1) {
         int idx = 0;
-        while (clients[idx].fd != -1 && idx < 256)
+        while (clients[idx].fd != -1 && idx < 256)  //make sure the idx is the smallest
             idx++;
         if (idx == 256) {
             fprintf(stderr, "clients full\n");
@@ -87,7 +88,7 @@ int main(int argc, const char* argv[]) {
         if (ret != 0) {
             sys_exit(ret);
         }
-        pthread_detach(tid);   
+        pthread_detach(tid);    //detach the thread
     }
     close(lfd);
     return 0;
