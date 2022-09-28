@@ -31,3 +31,14 @@ if you send it to the server you have, use command below. make sure the walls ar
 $ nc <server ip> <port number>
 ```
 
+# SelectServer.c
+
+under linux, use the command below to build
+
+``` SHELL
+$ gcc SelectServer.c -o SelectServer
+```
+
+## usage
+
+just like multithreadServer_demo.c
