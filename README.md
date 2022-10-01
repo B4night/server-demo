@@ -42,3 +42,15 @@ $ gcc SelectServer.c -o SelectServer
 ## usage
 
 just like multithreadServer_demo.c
+
+# epollServer.c
+
+under linux, use the command below to build
+
+``` SHELL
+$ gcc epollServer.c -o epollServer
+```
+
+## usage
+
+just like multithreadServer_demo.c
