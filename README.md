@@ -54,3 +54,17 @@ $ gcc epollServer.c -o epollServer
 ## usage
 
 just like multithreadServer_demo.c
+
+
+
+# epollReactor.c
+
+under linux, use the command below to build
+
+``` SHELL
+$ gcc epollReactor.c -o epollReactor
+```
+
+## usage
+
+just like multithreadServer_demo.c
